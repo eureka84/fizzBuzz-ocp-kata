@@ -12,9 +12,23 @@ public class FizzBuzz {
     }
 
     public String say(int number) {
-        String word = Arrays.stream(tellers)
+        String whatTellersHaveToSay = letTellersSpeakAbout(number);
+        return isSomething(whatTellersHaveToSay) ?
+                whatTellersHaveToSay :
+                theNumber(number);
+    }
+
+    private String letTellersSpeakAbout(int number) {
+        return Arrays.stream(tellers)
                 .map(t -> t.speakOf(number))
                 .collect(Collectors.joining());
-        return "".equals(word)? String.valueOf(number) : word;
+    }
+
+    private boolean isSomething(String word) {
+        return !"".equals(word);
+    }
+
+    private String theNumber(int number) {
+        return String.valueOf(number);
     }
 }

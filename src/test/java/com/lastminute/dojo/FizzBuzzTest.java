@@ -13,7 +13,7 @@ public class FizzBuzzTest {
 
     @Before
     public void setUp() {
-        fizzBuzz = new FizzBuzz(new FizzTeller());
+        fizzBuzz = new FizzBuzz(new FizzTeller(), new BuzzTeller());
     }
 
     @Test
@@ -24,5 +24,10 @@ public class FizzBuzzTest {
     @Test
     public void sayFizz() {
         assertThat(fizzBuzz.say(3), is("Fizz"));
+    }
+
+    @Test
+    public void sayBuzz() {
+        assertThat(fizzBuzz.say(5), is("Buzz"));
     }
 }
