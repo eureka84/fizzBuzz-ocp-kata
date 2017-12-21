@@ -1,7 +1,6 @@
 package com.lastminute.dojo;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -13,7 +12,7 @@ public class FizzBuzzTest {
 
     @Before
     public void setUp() {
-        fizzBuzz = new FizzBuzz(new FizzTeller(), new BuzzTeller());
+        fizzBuzz = FizzBuzz.create();
     }
 
     @Test
@@ -35,6 +34,5 @@ public class FizzBuzzTest {
     public void sayFizzBuzz() {
         assertThat(fizzBuzz.say(15), is("FizzBuzz"));
     }
-
 
 }

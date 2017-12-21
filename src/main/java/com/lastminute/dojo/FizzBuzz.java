@@ -31,4 +31,8 @@ public class FizzBuzz {
     private String theNumber(int number) {
         return String.valueOf(number);
     }
+
+    public static FizzBuzz create() {
+        return new FizzBuzz(new FizzTeller(), new BuzzTeller());
+    }
 }
