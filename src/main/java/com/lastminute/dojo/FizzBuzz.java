@@ -7,7 +7,7 @@ public class FizzBuzz {
 
     private final Teller[] tellers;
 
-    public FizzBuzz(Teller... tellers) {
+    private FizzBuzz(Teller... tellers) {
         this.tellers = tellers;
     }
 
