@@ -15,7 +15,7 @@ public class FizzBuzz {
         String whatTellersHaveToSay = letTellersSpeakAbout(number);
         return isSomething(whatTellersHaveToSay) ?
                 whatTellersHaveToSay :
-                theNumber(number);
+                repeatTheNumber(number);
     }
 
     private String letTellersSpeakAbout(int number) {
@@ -28,7 +28,7 @@ public class FizzBuzz {
         return !"".equals(word);
     }
 
-    private String theNumber(int number) {
+    private String repeatTheNumber(int number) {
         return String.valueOf(number);
     }
 
