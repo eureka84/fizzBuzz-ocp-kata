@@ -1,4 +1,4 @@
-package com.lastminute.dojo;
+package com.dojo;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

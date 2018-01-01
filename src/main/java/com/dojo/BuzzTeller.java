@@ -1,4 +1,4 @@
-package com.lastminute.dojo;
+package com.dojo;
 
 public class BuzzTeller implements Teller {
     @Override

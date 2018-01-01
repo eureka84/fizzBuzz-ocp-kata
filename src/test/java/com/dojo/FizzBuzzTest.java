@@ -1,4 +1,4 @@
-package com.lastminute.dojo;
+package com.dojo;
 
 import org.junit.Before;
 import org.junit.Test;
