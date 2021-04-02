@@ -1,5 +1,5 @@
 package com.dojo;
 
-public interface Teller {
+public interface StoryTeller {
     String speakOf(int number);
 }

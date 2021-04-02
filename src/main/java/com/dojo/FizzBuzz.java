@@ -5,28 +5,28 @@ import java.util.stream.Collectors;
 
 public class FizzBuzz {
 
-    private final Teller[] tellers;
+    private final StoryTeller[] storyTellers;
 
-    private FizzBuzz(Teller... tellers) {
-        this.tellers = tellers;
+    private FizzBuzz(StoryTeller... storyTellers) {
+        this.storyTellers = storyTellers;
     }
 
     public String say(int number) {
-        String whatTellersHaveToSay = letTellersSpeakAboutThe(number);
-        if (canBeHeard(whatTellersHaveToSay))
-            return whatTellersHaveToSay;
+        String whatStoryTellersHaveToSay = letStoryTellersSpeakAboutThe(number);
+        if (canBeHeard(whatStoryTellersHaveToSay))
+            return whatStoryTellersHaveToSay;
         else
             return repeatThe(number);
     }
 
-    private String letTellersSpeakAboutThe(int number) {
-        return Arrays.stream(tellers)
+    private String letStoryTellersSpeakAboutThe(int number) {
+        return Arrays.stream(storyTellers)
                 .map(t -> t.speakOf(number))
                 .collect(Collectors.joining());
     }
 
-    private boolean canBeHeard(String word) {
-        return !word.isEmpty();
+    private boolean canBeHeard(String story) {
+        return !story.isEmpty();
     }
 
     private String repeatThe(int number) {
@@ -34,7 +34,7 @@ public class FizzBuzz {
     }
 
     public static FizzBuzz create() {
-        return new FizzBuzz(new FizzTeller(), new BuzzTeller());
+        return new FizzBuzz(FizzStoryTeller.create(), BuzzStoryTeller.create());
     }
 
 }

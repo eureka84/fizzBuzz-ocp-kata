@@ -10,24 +10,24 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
-public class FizzTellerTest {
+public class FizzStoryTellerTest {
 
-    private FizzTeller fizzTeller;
+    private StoryTeller fizzStoryTeller;
 
     @Before
     public void setUp() {
-        fizzTeller = new FizzTeller();
+        fizzStoryTeller = FizzStoryTeller.create();
     }
 
     @Test
     @Parameters({"3", "6", "9", "12"})
     public void sayFizz(int number) {
-        assertThat(fizzTeller.speakOf(number), is("Fizz"));
+        assertThat(fizzStoryTeller.speakOf(number), is("Fizz"));
     }
 
     @Test
     @Parameters({"1", "2", "4", "5", "7", "8", "10", "11"})
     public void sayNothing(int number) {
-        assertThat(fizzTeller.speakOf(number), is(""));
+        assertThat(fizzStoryTeller.speakOf(number), is(""));
     }
 }
