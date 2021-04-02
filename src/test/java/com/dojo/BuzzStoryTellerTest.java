@@ -1,5 +1,6 @@
 package com.dojo;
 
+import io.vavr.control.Option;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -22,12 +23,12 @@ public class BuzzStoryTellerTest {
     @Test
     @Parameters({"1", "2", "3", "4", "6", "7", "8", "9"})
     public void sayNothing(int number) {
-        assertThat(buzzStoryTeller.speakOf(number), is(""));
+        assertThat(buzzStoryTeller.speakOf(number), is(Option.none()));
     }
 
     @Test
     @Parameters({"5", "10", "15", "225"})
     public void sayBuzz(int number) {
-        assertThat(buzzStoryTeller.speakOf(number), is("Buzz"));
+        assertThat(buzzStoryTeller.speakOf(number), is(Option.some("Buzz")));
     }
 }

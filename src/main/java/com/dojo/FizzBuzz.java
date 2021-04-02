@@ -1,7 +1,7 @@
 package com.dojo;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import io.vavr.collection.List;
+import io.vavr.control.Option;
 
 public class FizzBuzz {
 
@@ -12,21 +12,12 @@ public class FizzBuzz {
     }
 
     public String say(int number) {
-        String whatStoryTellersHaveToSay = letStoryTellersSpeakAboutThe(number);
-        if (canBeHeard(whatStoryTellersHaveToSay))
-            return whatStoryTellersHaveToSay;
-        else
-            return repeatThe(number);
+        return whatStoryTellersHaveToSayAbout(number).getOrElse(() -> repeatThe(number));
     }
 
-    private String letStoryTellersSpeakAboutThe(int number) {
-        return Arrays.stream(storyTellers)
-                .map(t -> t.speakOf(number))
-                .collect(Collectors.joining());
-    }
-
-    private boolean canBeHeard(String story) {
-        return !story.isEmpty();
+    private Option<String> whatStoryTellersHaveToSayAbout(int number) {
+        StoryTeller fizzBuzzStoryTeller = List.of(storyTellers).reduce(StoryTeller::combine);
+        return fizzBuzzStoryTeller.speakOf(number);
     }
 
     private String repeatThe(int number) {
