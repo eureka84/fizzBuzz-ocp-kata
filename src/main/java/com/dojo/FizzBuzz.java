@@ -12,27 +12,29 @@ public class FizzBuzz {
     }
 
     public String say(int number) {
-        String whatTellersHaveToSay = letTellersSpeakAbout(number);
-        return isSomething(whatTellersHaveToSay) ?
-                whatTellersHaveToSay :
-                repeatTheNumber(number);
+        String whatTellersHaveToSay = letTellersSpeakAboutThe(number);
+        if (canBeHeard(whatTellersHaveToSay))
+            return whatTellersHaveToSay;
+        else
+            return repeatThe(number);
     }
 
-    private String letTellersSpeakAbout(int number) {
+    private String letTellersSpeakAboutThe(int number) {
         return Arrays.stream(tellers)
                 .map(t -> t.speakOf(number))
                 .collect(Collectors.joining());
     }
 
-    private boolean isSomething(String word) {
-        return !"".equals(word);
+    private boolean canBeHeard(String word) {
+        return !word.isEmpty();
     }
 
-    private String repeatTheNumber(int number) {
+    private String repeatThe(int number) {
         return String.valueOf(number);
     }
 
     public static FizzBuzz create() {
         return new FizzBuzz(new FizzTeller(), new BuzzTeller());
     }
+
 }
