@@ -1,23 +1,17 @@
 package com.dojo;
 
 import io.vavr.collection.List;
-import io.vavr.control.Option;
 
 public class FizzBuzz {
 
-    private final StoryTeller[] storyTellers;
+    private final StoryTeller storyTeller;
 
     private FizzBuzz(StoryTeller... storyTellers) {
-        this.storyTellers = storyTellers;
+        storyTeller = List.of(storyTellers).reduce(StoryTeller::combine);
     }
 
     public String say(int number) {
-        return whatStoryTellersHaveToSayAbout(number).getOrElse(() -> repeatThe(number));
-    }
-
-    private Option<String> whatStoryTellersHaveToSayAbout(int number) {
-        StoryTeller fizzBuzzStoryTeller = List.of(storyTellers).reduce(StoryTeller::combine);
-        return fizzBuzzStoryTeller.speakOf(number);
+        return storyTeller.speakOf(number).getOrElse(() -> repeatThe(number));
     }
 
     private String repeatThe(int number) {
