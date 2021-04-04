@@ -5,4 +5,5 @@ public class FizzStoryTeller {
     public static StoryTeller create(){
         return GenericStoryTeller.createFor(3, "Fizz");
     }
+
 }
