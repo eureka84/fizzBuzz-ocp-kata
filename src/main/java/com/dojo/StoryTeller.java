@@ -7,8 +7,8 @@ public interface StoryTeller {
 
     default StoryTeller combine(StoryTeller other) {
         return number -> this.speakOf(number)
-                             .flatMap((word) -> other.speakOf(number)
-                                                     .map((otherWord) -> word + otherWord)
+                             .flatMap(word -> other.speakOf(number)
+                                                     .map(otherWord -> word + otherWord)
                                                      .orElse(Option.of(word)))
                              .orElse(other.speakOf(number));
     }
